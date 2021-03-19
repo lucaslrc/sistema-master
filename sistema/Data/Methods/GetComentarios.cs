@@ -10,7 +10,7 @@ namespace sistema.Data.Methods
         {
             using (var ctx = new SistemaContext())
             {
-                var comentarios = ctx.comentarios.Where(x => x.NoticiaID == ID).ToList();
+                var comentarios = ctx.comentarios.Where(x => x.NoticiaID == ID).OrderByDescending(o => o.ComentarioID).ToList();
                 return comentarios;   
             }
         }

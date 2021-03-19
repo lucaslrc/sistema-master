@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
@@ -21,16 +20,17 @@ namespace sistema.Controllers
         {
             using (var ctx = new SistemaContext())
             {
-                var noticia = ctx.noticias.Where(x => x.NoticiaID == ID).FirstOrDefault();
-                // var comentarios = ctx.comentarios.Where(x => x.NoticiaID == ID).ToList();
-                // ViewData["comentarios"] = comentarios;
-                return View(noticia);
+                var gcn = new GetNoticia();
+                return View(gcn.Get(ID));
             }
         }
-        public IActionResult Comentarios(long id)
+        public IActionResult Comentarios(long id, string msg)
         {
             var gct = new GetComentarios();
+
+            ViewBag.Message = msg;
             ViewData["comentarios"] = gct.Get(id);
+            
             return View("Comentarios", gct.Get(id));
         }
 
@@ -40,13 +40,13 @@ namespace sistema.Controllers
             
             if (cmt.Insere(id, model.Autor, model.Email, model.ComentarioTexto) == true)
             {
-                ViewBag.Message = "Comentário adicionado com sucesso";
-                return RedirectToAction("Comentarios", id);
+                string msg = "Comentário adicionado com sucesso!";
+                return RedirectToAction("Comentarios", new {id = id, msg});
             }
             else
             {
-                ViewBag.Message = "Não foi possível adicionar um comentário";
-                return RedirectToAction("Comentarios", id);
+                string msg = "Não foi possível adicionar um comentário";
+                return RedirectToAction("Comentarios", new {id = id, msg});
             }
         }
 

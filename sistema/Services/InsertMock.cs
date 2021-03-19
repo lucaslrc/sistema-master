@@ -53,22 +53,31 @@ namespace sistema.Services
         {
             using (var ctx = new SistemaContext())
             {
-                for (int i = 0; i < 10; i++)
-                {
+                var existeComentario1 = ctx.comentarios.Any(x => x.NoticiaID == 1);
+                var existeComentario2 = ctx.comentarios.Any(x => x.NoticiaID == 2);
+                var existeComentario3 = ctx.comentarios.Any(x => x.NoticiaID == 3);
+
+                if (!existeComentario1) {
                     ctx.comentarios.Add(new Comentario{
                         NoticiaID = 1,
                         Autor = "Lucas",
                         Email = "lucas@email.com",
                         ComentarioTexto = "Meu comentário"
-                    });   
+                    });  
+                    ctx.SaveChanges();
+                }
 
+                if (!existeComentario2) {
                     ctx.comentarios.Add(new Comentario{
                         NoticiaID = 2,
                         Autor = "Lucas",
                         Email = "lucas@email.com",
                         ComentarioTexto = "Meu comentário"
-                    });   
+                    });
+                    ctx.SaveChanges();   
+                }
 
+                if (!existeComentario3) {
                     ctx.comentarios.Add(new Comentario{
                         NoticiaID = 3,
                         Autor = "Lucas",

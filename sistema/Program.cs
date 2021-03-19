@@ -8,6 +8,9 @@ namespace sistema
     {
         public static void Main(string[] args)
         {
+            var mock = new InsertMock();
+            mock.InsertNoticia();
+            mock.InsertComentario();
             CreateHostBuilder(args).Build().Run();
         }
 

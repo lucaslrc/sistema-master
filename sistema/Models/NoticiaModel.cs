@@ -1,7 +1,5 @@
-using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 
 namespace sistema.Models
 {
@@ -34,15 +32,18 @@ namespace sistema.Models
         public long ComentarioID { get; set; }
 
         [Required]
-        [StringLength(50)]
+        [DataType(DataType.Text)]
+        [StringLength(30, MinimumLength = 3)]
         public string Autor { get; set; }
 
         [Required]
-        [StringLength(20)]
+        [DataType(DataType.Text)]
+        [StringLength(20, MinimumLength = 3)]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(300)]
+        [DataType(DataType.Text)]
+        [StringLength(100, MinimumLength = 5)]
         public string ComentarioTexto { get; set; }
         public long NoticiaID { get; set; }
         public Noticia Noticia { get; set; }
