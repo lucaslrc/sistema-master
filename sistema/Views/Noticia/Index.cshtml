@@ -1,0 +1,29 @@
+@using sistema.Models
+@model sistema.Models.Noticia
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="container-sm" style="color: white; text-align: justify;">
+    <h1>
+        @Html.DisplayFor(c => c.Titulo)
+    </h1>
+    <br>
+    <h3>
+        @Html.DisplayFor(c => c.Subtitulo)
+    </h3>
+    <br>
+    <p>
+        @Html.DisplayFor(c => c.Corpo)
+    </p>
+    <br>
+    @* @foreach (var item in ViewData["comentarios"] as List<Comentario>)
+    {
+        @item.Autor
+    } *@
+    <h5>
+        <a asp-controller="Noticia" asp-action="Comentarios" asp-route-id="@Model.NoticiaID" style="color: white;">Veja os comentários desta notícia</a>
+    </h5>
+</div>
+
+

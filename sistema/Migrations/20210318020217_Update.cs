@@ -3,7 +3,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
 namespace sistema.Migrations
 {
-    public partial class InitialMigration : Migration
+    public partial class Update : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,7 +12,10 @@ namespace sistema.Migrations
                 columns: table => new
                 {
                     NoticiaID = table.Column<long>(type: "bigint", nullable: false)
-                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn)
+                        .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
+                    Titulo = table.Column<string>(type: "text", nullable: false),
+                    Subtitulo = table.Column<string>(type: "text", nullable: false),
+                    Corpo = table.Column<string>(type: "text", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -25,7 +28,9 @@ namespace sistema.Migrations
                 {
                     ComentarioID = table.Column<long>(type: "bigint", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    ComentarioTexto = table.Column<string>(type: "text", nullable: true),
+                    Autor = table.Column<string>(type: "character varying(50)", maxLength: 50, nullable: false),
+                    Email = table.Column<string>(type: "character varying(20)", maxLength: 20, nullable: false),
+                    ComentarioTexto = table.Column<string>(type: "character varying(300)", maxLength: 300, nullable: false),
                     NoticiaID = table.Column<long>(type: "bigint", nullable: false)
                 },
                 constraints: table =>

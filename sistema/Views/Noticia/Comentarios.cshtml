@@ -1,0 +1,39 @@
+@using sistema.Models
+@model IEnumerable<sistema.Models.Comentario>
+@{
+    ViewData["Title"] = "Comentarios";
+}
+<h2 style="color: white;">
+    Escreva um comentário
+</h2>
+<strong>@ViewBag.Message</strong>
+<br>
+<form asp-controller="Noticia" asp-action="InserirComentario" asp-route-id="@Model.Select(x => x.NoticiaID).FirstOrDefault()" style="color: white;">
+    <div class="form-group">
+        <label for="forInputNome">Nome</label>
+        <input type="text" class="form-control" id="Autor" name="Autor" aria-describedby="nomeHelp" placeholder="Digite seu nome">
+    </div>
+    <div class="form-group">
+        <label for="forInputEmail">Email</label>
+        <input type="email" class="form-control" id="Email" name="Email" placeholder="Digite seu e-mail">
+    </div>
+    <div class="form-group">
+        <label for="forInputComentario">Comentário</label>
+        <input type="text" rows="10" class="form-control" id="ComentarioTexto" name="ComentarioTexto" style="height: 300px;">
+    </div>
+    <button type="submit" class="btn btn-primary">Comentar</button>
+</form>
+<br>
+<br>
+<h4 style="color: white;">
+    Comentários
+</h4>
+@foreach (var item in ViewData["comentarios"] as List<Comentario>)
+{
+    <div class="card" style="text-align: justify">
+        <div class="card-body">
+            <h5 class="card-title">@item.Autor</h5>
+            <p class="card-text">@item.ComentarioTexto</p>
+        </div>
+    </div>
+}

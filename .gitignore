@@ -1,2 +1,5 @@
-sistema/bin/
-sistema/obj/
+.vscode
+sistema/[Bb]in
+sistema/[Oo]bj
+sistema.testes/[Bb]in
+sistema.testes/[Oo]bj

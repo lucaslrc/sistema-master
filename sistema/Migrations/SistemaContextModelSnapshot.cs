@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
-using sistema;
+using sistema.Data;
 
 namespace sistema.Migrations
 {
@@ -18,15 +18,27 @@ namespace sistema.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 63)
                 .HasAnnotation("ProductVersion", "5.0.0");
 
-            modelBuilder.Entity("sistema.Comentario", b =>
+            modelBuilder.Entity("sistema.Models.Comentario", b =>
                 {
                     b.Property<long>("ComentarioID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .UseIdentityByDefaultColumn();
 
+                    b.Property<string>("Autor")
+                        .IsRequired()
+                        .HasMaxLength(50)
+                        .HasColumnType("character varying(50)");
+
                     b.Property<string>("ComentarioTexto")
-                        .HasColumnType("text");
+                        .IsRequired()
+                        .HasMaxLength(300)
+                        .HasColumnType("character varying(300)");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("character varying(20)");
 
                     b.Property<long>("NoticiaID")
                         .HasColumnType("bigint");
@@ -38,21 +50,33 @@ namespace sistema.Migrations
                     b.ToTable("comentarios");
                 });
 
-            modelBuilder.Entity("sistema.Noticia", b =>
+            modelBuilder.Entity("sistema.Models.Noticia", b =>
                 {
                     b.Property<long>("NoticiaID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bigint")
                         .UseIdentityByDefaultColumn();
 
+                    b.Property<string>("Corpo")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Subtitulo")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Titulo")
+                        .IsRequired()
+                        .HasColumnType("text");
+
                     b.HasKey("NoticiaID");
 
                     b.ToTable("noticias");
                 });
 
-            modelBuilder.Entity("sistema.Comentario", b =>
+            modelBuilder.Entity("sistema.Models.Comentario", b =>
                 {
-                    b.HasOne("sistema.Noticia", "Noticia")
+                    b.HasOne("sistema.Models.Noticia", "Noticia")
                         .WithMany("Comentarios")
                         .HasForeignKey("NoticiaID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -61,7 +85,7 @@ namespace sistema.Migrations
                     b.Navigation("Noticia");
                 });
 
-            modelBuilder.Entity("sistema.Noticia", b =>
+            modelBuilder.Entity("sistema.Models.Noticia", b =>
                 {
                     b.Navigation("Comentarios");
                 });

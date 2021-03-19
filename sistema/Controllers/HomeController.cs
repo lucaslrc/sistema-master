@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using sistema.Data;
 using sistema.Models;
 
 namespace sistema.Controllers
@@ -20,7 +21,15 @@ namespace sistema.Controllers
 
         public IActionResult Index()
         {
-            return View();
+            var ctx = new SistemaContext();
+            
+            var model = from noticias in ctx.noticias
+                select new Noticia {
+                    NoticiaID = noticias.NoticiaID,
+                    Titulo = noticias.Titulo
+                };
+
+            return View(model.ToList());
         }
 
         public IActionResult Privacy()
