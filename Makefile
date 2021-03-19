@@ -28,4 +28,5 @@ clean:
 	# Init ASP.NET project
 	sudo snap remove docker
 	sudo apt-get purge dotnet-sdk-5.0
+	sudo apt-get autoremove
 
