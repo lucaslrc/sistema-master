@@ -10,6 +10,7 @@ install:
 	sudo apt-get update
 	sudo apt-get install -y dotnet-sdk-5.0
 	dotnet --info
+	dotnet tool install -g dotnet-ef
 	# Install Docker
 	sudo snap install docker
 run:
