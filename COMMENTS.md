@@ -7,7 +7,7 @@ Ideias:
   - Aplicaria uma arquitetura mais escalável para o alto índice de usuários simultâneos na apliação atual;
   - Implementaria testes unitários e testes de integração utilizando Selenium Web Driver na aplicação atual;
   - Implementaria paginações eficientes na aplicação atual;
-  - 
+  - Implementar um GET na API do Gravatar usando jquery para pegar o resultado das fotos vinculadas aos e-mails.
 
 Motivos:
   - .NET: Tecnologia em que tenho mais domínio para realizar o desenvolvimento de aplicações WEB, além de ser uma plataforma completa, estável e robusta;
