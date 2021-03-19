@@ -11,11 +11,8 @@ install:
 	sudo apt-get install -y dotnet-sdk-5.0
 	dotnet --info
 	# Install Docker
-	wget https://download.docker.com/linux/static/stable/x86_64/docker-20.10.5.tgz
-	tar xzvf docker-20.10.5.tgz
-	sudo cp docker/* /usr/bin
+	sudo snap install docker
 run:
-	sudo dockerd &
 	sudo docker run --name some-postgres -e POSTGRES_PASSWORD=mysecretpassword -d postgres
 	# Init ASP.NET project
 	dotnet restore
