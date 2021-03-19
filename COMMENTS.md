@@ -14,6 +14,7 @@ Ideias:
   - Desenvolveria um sistema de login utilizando JWT (Json Web Token) trazendo segurança em relação aos dados do usuário;
   - Tornaria o sistema em um leitor de RSS (semelhante ao https://feedly.com) criando um feed apenas com as notícias desejadas, desenvolvendo uma rede social de         notícias;
   - Utilizaria Kubernetes para fazer a gestão dos containers (Aplicação golang + vuejs + postgres);
+  - Utilizaria FreeBSD como servidor substituindo o Docker + Kubernetes;
   - Implementaria os métodos assícronos no Controller para melhor desempenho do sistema na aplicação atual;
   - Aplicaria uma arquitetura mais escalável para o alto índice de usuários simultâneos na apliação atual;
   - Implementaria testes unitários e testes de integração utilizando Selenium Web Driver na aplicação atual;
